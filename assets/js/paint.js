@@ -1,24 +1,24 @@
 function configureListeners() {
-    let images = ['pn1', 'pn2', 'pn3', 'pn4', 'pn5', 'pn6', 'pn7', 'pn8', 'pn9'] // select img elements  
+    let images = document.getElementsByTagName('img'); // select img elements  
 
 
      for (var i = 0; i < images.length; i++) {        
         // iterate over images and add mouseover event listeners
-        let image = document.getElementById(images[i]);
+        let image = images[i];
         image.addEventListener('mouseover', addOpacity);
-        image.addEventListener('mouseleave', removeOpacity);
+        image.addEventListener('mouseleave', removeOpacity, false);
     } 
 }
 
 function addOpacity(event) {
     // add appropriate CSS class
-    this.style.opacity = '0.5';
-    getProductInfo(event.target.id);     
+    this.classList.add('dim');
+    getProductInfo(event.target.id);
 }
 
 function removeOpacity(event) {
      //remove appropriate CSS class
-     this.style.opacity = '1';
+     this.classList.remove('dim');
 
     let element = document.getElementById('color-price');
         element.textContent = '';
